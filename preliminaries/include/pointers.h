@@ -3,8 +3,11 @@ typedef struct Element_ {
     struct Element_* next;
 } Element;
 
-void get_pointer_value(int* iptr);
+int get_pointer_value(int* iptr);
 int* alloc_single_pointer();
 int* create_dangling_pointer();
 
-void linked_list();
+char* linked_list();
+int* array_reference();
+
+void swap(int* x, int* y);
