@@ -1,3 +1,7 @@
+#pragma once
+
+#include <stddef.h>
+
 typedef struct Element_ {
     int data;
     struct Element_* next;
@@ -11,3 +15,6 @@ char* linked_list();
 int* array_reference();
 
 void swap(int* x, int* y);
+void swap_arbitrary(void* x, void* y, size_t size);
+
+int match_int(void* x, void* y);
