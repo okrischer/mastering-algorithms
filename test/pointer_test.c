@@ -3,6 +3,8 @@
 #include "pointers.h"
 #include "test.h"
 
+
+/* testing pointers from section preliminaries */
 int pointer_test() {
     int* iptr = alloc_single_pointer();
     if (get_pointer_value(iptr) != 42){
@@ -50,18 +52,4 @@ int pointer_test() {
     }
 
     return TEST_SUCCESS;
-}
-
-int main(int argc, char* argv[]) {
-    if (argc < 2) {
-      printf("please provide a test target, e.g `pointer`\n");
-      return TEST_FAILURE;
-    }
-
-    int test_success = 0;
-
-    if (strcmp(argv[1], "pointer") == 0) {
-        test_success = pointer_test();
-    }
-    return test_success;
 }
