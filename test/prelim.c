@@ -5,7 +5,7 @@
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
-      printf("please provide a test target (1 for pointer, 2 for recursion\n");
+      printf("please provide a test target (1 for pointer, 2 for recursion)\n");
       return TEST_FAILURE;
     }
 
