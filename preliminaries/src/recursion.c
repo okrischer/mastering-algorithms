@@ -24,7 +24,21 @@ size_t fib_helper(size_t n, size_t a, size_t b) {
     if (n < 2) return b;
     return fib_helper(n-1, b, a+b);
 }
-/* naive recursive implementation of fibonacci numbers */
+/* tail-recursive implementation of fibonacci numbers */
 size_t fib_tailrec(size_t n) {
     return fib_helper(n, 0, 1);
+}
+
+/* imperative implementation of fibonacci numbers */
+size_t fib_imper(size_t n) {
+    size_t a = 0;
+    size_t b = 1;
+    size_t t = 0;
+    while (n != 0) {
+        n -= 1;
+        t = a;
+        a = b;
+        b += t;
+    }
+    return a;
 }

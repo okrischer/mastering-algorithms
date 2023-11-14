@@ -38,5 +38,11 @@ int recursion_test() {
         return TEST_FAILURE;
     }
 
+    int fib_imp = fib_imper(n);
+    if (fib_imp != fib_10) {
+        printf("%d'th fibonacci number should be %d, but it is %d\n",
+                n, fib_10, fib_imp);
+        return TEST_FAILURE;
+    }
     return TEST_SUCCESS;
 }
