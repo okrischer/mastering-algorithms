@@ -13,15 +13,15 @@ void list_init(List* list, void (*destroy)(void* data)) {
 void list_destroy(List* list) {
     void* data;
     while (list_size(list) > 0) {
-        if (list_rem_next(list, NULL, (void**)&data) == 0
+        if (list_pop(list, (void**)&data) == 0
                 && list->destroy != NULL) {
             list->destroy(data);
         }
     }
 }
 
-/* insert an element into a list just after a specified element */
-int list_ins_next(List* list, ListElem* after, const void* data) {
+/* insert an element at the head of the list */
+int list_push(List* list, const void* data) {
     ListElem* new_elem;
 
     // allocate memory for new element
@@ -30,27 +30,14 @@ int list_ins_next(List* list, ListElem* after, const void* data) {
     }
 
     new_elem->data = (void*)data;
-
-    // find inserting position
-    if (after == NULL) { // insert at the head of the list
-        new_elem->next = list->head;
-        list->head = new_elem;
-    } else { // insert after specified element
-        new_elem->next = after->next;
-        after->next = new_elem;
-    }
-
+    new_elem->next = list->head;
+    list->head = new_elem;
     list->size += 1;
     return 0;
 }
 
-/* insert an element at the head of the list */
-int list_push(List *list, const void *data) {
-    return list_ins_next(list, NULL, data);
-}
-
-/* remove an element just after a specified element and free memory */
-int list_rem_next(List* list, ListElem* after, void** data) {
+/* remove the element from the head of the list and free memory */
+int list_pop(List* list, void** data) {
     ListElem* old_elem;
 
     // no removal from an empty list
@@ -58,26 +45,10 @@ int list_rem_next(List* list, ListElem* after, void** data) {
         return -1;
     }
 
-    // find removal position
-    if (after == NULL) { // remove from the head of the list
-        *data = list->head->data;
-        old_elem = list->head;
-        list->head = list->head->next;
-    } else { // remove after specified element
-        if (after->next == NULL) { // do not remove if after is the tail
-            return -1;
-        }
-        *data = after->next->data;
-        old_elem = after->next;
-        after->next = after->next->next;
-    }
-
+    *data = list->head->data;
+    old_elem = list->head;
+    list->head = list->head->next;
     free(old_elem);
     list->size -= 1;
     return 0;
-}
-
-/* remove an element from the head of the list */
-int list_pop(List *list, void **data) {
-    return list_rem_next(list, NULL, data);
 }

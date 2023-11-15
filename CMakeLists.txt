@@ -7,7 +7,7 @@ target_link_libraries(prelim PUBLIC preliminaries)
 target_include_directories(prelim PUBLIC preliminaries/include include)
 
 add_subdirectory(datastructures)
-add_executable(ds ds.c)
+add_executable(ds ds.c test/list.c)
 target_link_libraries(ds PUBLIC datastructures)
 target_include_directories(ds PUBLIC datastructures/include include)
 

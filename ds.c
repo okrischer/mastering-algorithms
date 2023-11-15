@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "list.h"
 #include "test.h"
 
 
@@ -10,5 +9,14 @@ int main(int argc, char* argv[]) {
       return TEST_FAILURE;
     }
 
-    return TEST_SUCCESS;
+    int test;
+    
+    switch (atoi(argv[1])) {
+        case 1:     test = manage_frames();
+                    break;
+        default:    test = TEST_FAILURE;
+                    printf("nothing to test\n");
+    }
+
+    return test;
 }

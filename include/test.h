@@ -6,3 +6,5 @@
 
 int pointer_test();
 int recursion_test();
+
+int manage_frames();
