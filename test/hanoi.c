@@ -1,7 +1,7 @@
 #include <stddef.h>
 #include <stdio.h>
-#include "stack.h"
 #include "test.h"
+#include "hanoi.h"
 
 void initialize(Stack* start, Stack* temp, Stack* goal) {
     stack_init(start, NULL);

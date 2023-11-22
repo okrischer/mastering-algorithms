@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "test.h"
 #include "hanoi.h"
+#include "events.h"
 
 
 int main(int argc, char* argv[]) {
@@ -14,6 +15,8 @@ int main(int argc, char* argv[]) {
 
     switch (atoi(argv[1])) {
         case 1:     test = hanoi();
+                    break;
+        case 2:     test = events();
                     break;
         default:    test = TEST_FAILURE;
                     printf("nothing to test\n");
