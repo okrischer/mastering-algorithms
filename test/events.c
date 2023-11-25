@@ -45,7 +45,7 @@ int dispatcher(Event* event) {
     return 0;
 }
 
-int queue_test() {
+int events() {
     Queue events;
     Event event1 = 1;
     Event event2 = 2;
